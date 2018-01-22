@@ -2,7 +2,7 @@
 
 ## Background of Game 
 
-The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead, or "populated" or "unpopulated". Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, living or dead, or "populated" or "unpopulated". Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
 
 1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
 2. Any live cell with two or three live neighbours lives on to the next generation.
@@ -45,10 +45,10 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 ## Test Cases 
 
-- A 3 x 3 grid with no alive cells will contain no alive cells in the next generation.
+- A 3 x 3 grid with no living cells will contain no living cells in the next generation.
 
-- A 3 x 3 grid with one alive cell will die in the next generation.
+- A 3 x 3 grid with one living cell will die in the next generation.
 
-- A 3 x 3 grid with two live cells will stay alive in the next generation.
+- A 3 x 3 grid with two live cells will stay living in the next generation.
 
 

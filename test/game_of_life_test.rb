@@ -4,12 +4,12 @@ class Community
   def tick            
   end            
 
-  def alive_cells            
+  def living_cells            
   end            
 end                
 
 describe Community do            
-  it 'Community with no alive cells will contain no alive cells in the next generation' do  
+  it 'Community with no living cells will contain no living cells in the next generation' do  
     skip          
     cell = Cell.new(0,0)           
     community = Community.new
@@ -17,6 +17,6 @@ describe Community do
 
     community.tick          
 
-    assert_equal 0, alive_cells
+    assert_equal 0, living_cells
   end            
 end  
