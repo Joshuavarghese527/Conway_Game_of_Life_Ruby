@@ -101,4 +101,54 @@ describe Community do
 
     assert_equal 3, community.number_of_neighbors_for(c1)
   end  
+  it 'number of neighbors is 3 for a south west cell that has a neighbor in east, center and south' do            
+    c1 = Cell.new(Location::SOUTHEAST)
+    c2 = Cell.new(Location::SOUTH)
+    c3 = Cell.new(Location::EAST)
+    c4 = Cell.new(Location::CENTER)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4])
+
+    assert_equal 3, community.number_of_neighbors_for(c1)
+  end 
+  it 'number of neighbors is 3 for a north cell that has a neighbor in northeast, center and northwest' do            
+    c1 = Cell.new(Location::NORTH)
+    c2 = Cell.new(Location::NORTHWEST)
+    c3 = Cell.new(Location::NORTHEAST)
+    c4 = Cell.new(Location::CENTER)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4])
+
+    assert_equal 3, community.number_of_neighbors_for(c1)
+  end 
+  it 'number of neighbors is 3 for a south cell that has a neighbor in southeast, center and southwest' do            
+    c1 = Cell.new(Location::SOUTH)
+    c2 = Cell.new(Location::SOUTHWEST)
+    c3 = Cell.new(Location::SOUTHEAST)
+    c4 = Cell.new(Location::CENTER)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4])
+
+    assert_equal 3, community.number_of_neighbors_for(c1)
+  end 
+  it 'number of neighbors is 3 for a east cell that has a neighbor in southeast, center and northeast' do            
+    c1 = Cell.new(Location::EAST)
+    c2 = Cell.new(Location::NORTHEAST)
+    c3 = Cell.new(Location::SOUTHEAST)
+    c4 = Cell.new(Location::CENTER)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4])
+
+    assert_equal 3, community.number_of_neighbors_for(c1)
+  end 
+  it 'number of neighbors is 3 for a west cell that has a neighbor in southwest, center and northwest' do            
+    c1 = Cell.new(Location::WEST)
+    c2 = Cell.new(Location::NORTHWEST)
+    c3 = Cell.new(Location::SOUTHWEST)
+    c4 = Cell.new(Location::CENTER)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4])
+
+    assert_equal 3, community.number_of_neighbors_for(c1)
+  end 
 end  
