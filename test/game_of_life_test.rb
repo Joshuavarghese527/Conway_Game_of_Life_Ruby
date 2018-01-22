@@ -47,5 +47,23 @@ describe Community do
     community.seed([c1, c2])
 
     assert_equal 1, community.number_of_neighbors_for(c1)  
-  end                      
+  end 
+  it 'Number of neighbors is 2 for a cell that has a neighbor in north and south' do
+    c1 = Cell.new(Location::CENTER)
+    c2 = Cell.new(Location::NORTH)
+    c3 = Cell.new(Location::SOUTH)
+    community = Community.new
+    community.seed([c1, c2, c3])
+
+    assert_equal 2, community.number_of_neighbors_for(c1)
+  end
+  it 'Number of neighbors is 2 for a cell that has a neighbor in north and west' do
+    c1 = Cell.new(Location::NORTHWEST)
+    c2 = Cell.new(Location::NORTH)
+    c3 = Cell.new(Location::WEST)
+    community = Community.new
+    community.seed([c1, c2, c3])
+
+    assert_equal 2, community.number_of_neighbors_for(c1)
+  end
 end  

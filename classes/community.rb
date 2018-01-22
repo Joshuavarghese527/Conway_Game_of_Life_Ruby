@@ -21,11 +21,28 @@ class Community
   end  
 
   def number_of_neighbors_for(cell)
-   north_cell = @grid_mapping.detect {|cell| cell.location ==  Location::NORTH}
-   if north_cell
-      1
-    else
-      0
-    end
+    size = 0
+    if cell.location == Location::CENTER
+      north_cell = @grid_mapping.detect {|c| c.location == Location::NORTH}
+      south_cell = @grid_mapping.detect {|c| c.location == Location::SOUTH}
+
+      if north_cell
+        size += 1
+      end            
+      if south_cell
+        size += 1
+      end            
+    elsif cell.location == Location::NORTHWEST
+      north_cell = @grid_mapping.detect {|c| c.location == Location::NORTH}
+      west_cell = @grid_mapping.detect {|c| c.location == Location::WEST}
+
+      if north_cell
+        size += 1
+      end            
+      if west_cell
+        size += 1
+      end            
+    end            
+    size
   end 
-end 
+end
