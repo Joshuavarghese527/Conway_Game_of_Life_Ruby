@@ -1,5 +1,4 @@
 class Community 
-  
   def initialize
     @grid_mapping = []  
   end
@@ -18,11 +17,5 @@ class Community
 
   def seed(cells)
     @grid_mapping = cells
-  end  
-
-  def neighbors?(cell1, cell2)
-    if cell1.center? or cell2.center?
-       true
-    end
-  end         
+  end           
 end 
