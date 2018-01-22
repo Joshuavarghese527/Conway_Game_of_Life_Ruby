@@ -8,9 +8,18 @@ describe Cell do
 
     assert cell.living?            
   end  
+
   it 'can transition to dead state' do
     cell = Cell.new(Location::CENTER)
     cell.die 
     refute cell.living?
-  end        
+  end 
+
+  it 'has a location' do
+    cell = Cell.new(Location::NORTH)
+    result = cell.location
+
+    assert_equal Location::NORTH, result
+  end    
+     
 end 

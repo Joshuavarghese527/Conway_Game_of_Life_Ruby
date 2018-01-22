@@ -1,4 +1,5 @@
 class Community 
+
   def initialize
     @grid_mapping = []  
   end
@@ -17,5 +18,14 @@ class Community
 
   def seed(cells)
     @grid_mapping = cells
-  end           
+  end  
+
+  def number_of_neighbors_for(cell)
+   north_cell = @grid_mapping.detect {|cell| cell.location ==  Location::NORTH}
+   if north_cell
+      1
+    else
+      0
+    end
+  end 
 end 

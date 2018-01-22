@@ -16,4 +16,8 @@ class Cell
   def center?
     (@x == 0 and @y == 0)
   end
+
+  def location              
+    Location.for(@x, @y)
+  end 
 end    
