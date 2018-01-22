@@ -1,8 +1,8 @@
 class Cell                
-  def initialize(x, y)
+  def initialize(location)
     @living = true
-    @x = x
-    @y = y
+    @x = location[0]
+    @y = location[1]
   end    
 
   def living?            
