@@ -13,13 +13,13 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 ## Key requirement: 
 
-- Rules 
+## Rules 
 1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
 2. Any live cell with two or three live neighbours lives on to the next generation.
 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-- Methods
+## Methods
 1. Assumptions
 - Simplify by making 3x3 grid
 - Number of generations over which to observe the evolution is 3.
@@ -33,13 +33,11 @@ The initial pattern constitutes the seed of the system. The first generation is 
 3. Test-Driven Game of Life
 - Minitest 
 
-4. Moore Neighborhood
+## Moore Neighborhood
 - The Moore Neighborhood is composed of nine cells: a central cell and the eight cells that surround it.
 
   | x - 1, y + 1 | x, y + 1 | x + 1, y + 1 |
-  ------------------------------------------
   | x - 1,  y    | x,y      | x + 1, y     |
-  ------------------------------------------
   | x - 1, y -1  | x, y - 1 | x + 1, y - 1 |
 
 - We can fill the Moore Neighborhood with 0s and 1s randomly
