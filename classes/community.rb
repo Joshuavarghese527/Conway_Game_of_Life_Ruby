@@ -5,20 +5,15 @@ class Community
   end
 
   def tick  
-    if @grid_mapping.size > 1
+   if @grid_mapping.size > 1
       @grid_mapping.each do |cell|
-        neighbors_count = number_of_neighbors_for(cell)
-        if neighbors_count != 2 or neighbors_count == 3
-          cell.die 
-        end
-        if cell.dead? and neighbors_count == 3
-          cell.birth
-        end
-      end
+        lonely_or_overcrowed_cells_die(cell)
+        reproduction_of(cell)
+      end 
     else
       @grid_mapping.clear
-    end         
-  end            
+    end
+  end        
 
   def living_cells
     @grid_mapping.size            
@@ -193,5 +188,19 @@ class Community
     size += count_north_cell
     size += count_south_cell
     size
-  end            
-end                           
+  end 
+
+  def lonely_or_overcrowed_cells_die(cell)
+    neighbors_count = number_of_neighbors_for(cell)
+    if neighbors_count != 2 or neighbors_count == 3
+      cell.die 
+    end
+  end  
+
+  def reproduction_of(cell)
+    neighbors_count = number_of_neighbors_for(cell)
+    if cell.dead? and neighbors_count == 3
+      cell.birth         
+    end  
+  end          
+end                          
