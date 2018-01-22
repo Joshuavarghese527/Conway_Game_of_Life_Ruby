@@ -11,5 +11,10 @@ describe Cell do
     cell = Cell.new(0,0)
     cell.die 
     refute cell.living?
-  end         
+  end 
+  it 'knows if it is in the center' do
+    cell = Cell.new(0, 0)
+
+    assert cell.center?
+  end        
 end 

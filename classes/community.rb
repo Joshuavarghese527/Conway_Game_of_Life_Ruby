@@ -1,10 +1,15 @@
 class Community 
+  
   def initialize
     @grid_mapping = []  
   end
 
   def tick  
-    @grid_mapping.clear           
+    if 
+      @grid_mapping.size > 1
+    else 
+      @grid_mapping.clear
+    end         
   end            
 
   def living_cells
@@ -13,5 +18,11 @@ class Community
 
   def seed(cells)
     @grid_mapping = cells
-  end           
+  end  
+
+  def neighbors?(cell1, cell2)
+    if cell1.center? or cell2.center?
+       true
+    end
+  end         
 end 

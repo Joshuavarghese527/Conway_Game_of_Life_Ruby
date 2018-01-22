@@ -20,8 +20,7 @@ describe Community do
 
     assert_equal 0, community.living_cells            
   end  
-  it 'Community with two living cells as neighbors will stay living in the next generation' do  
-    skip          
+  it 'Community with two living cells as neighbors will stay living in the next generation' do            
     c1 = Cell.new(0,0)
     c2 = Cell.new(0,1)
     c3 = Cell.new(-1,1)
@@ -32,5 +31,13 @@ describe Community do
     community.tick            
 
     assert_equal 2, community.living_cells            
-  end                          
+  end  
+  it 'two cells are neighbors if they are next to each other' do
+    c1 = Cell.new(0,0)
+    c2 = Cell.new(0,1)
+    community = Community.new
+    result = community.neighbors?(c1, c2)
+
+    assert result 
+  end                       
 end  
