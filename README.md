@@ -41,7 +41,7 @@ The initial pattern constitutes the seed of the system. The first generation is 
   | x - 1, y -1  | x, y - 1 | x + 1, y - 1 |
 
 - We can fill the Moore Neighborhood with 0s and 1s randomly
-- Tick method can be used for game class? 
+- Tick method can be used for game class 
 
 ## Test Cases 
 
