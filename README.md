@@ -51,28 +51,23 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 - A 3 x 3 grid with two live cells will stay living in the next generation.
 
-## List of Neighbors 3x3 grid 
 
-- NorthWest : North, Center, West
-- NorthEast : North, Center, East
-- SouthWest : West, Center, South
-- SouthEast : East, Center, South
-- Center: Has everyone as its neighbors
-- North: NorthWest, Center, NorthEast, West, East
-- South: SouthWest, SouthEast, Center, East, West
-- East: NorthEast, SouthEast, Center, North, South
-- West: NorthWest, North, Center, South, SouthWest
+## What we want to accomplish
 
-## Specific Coordinate for neighbor locations
+``` ruby
+if (cell is dead) AND (number-of-neighbors is 3)
+     # new cell is born
+     set cell alive
+if (cell is alive) AND (number-of-neighbors is 2 OR 3)
+     # Leave the cell alive
+     nothing to do
+if (cell is alive AND (number-of-neighbors is NOT 2 OR 3)
+     # lonely or over-crowded cells die
+     set cell dead
+if (cell is dead) AND (number-of-neighbors is NOT 3)
+     # leave cell dead
+     nothing to do
+```
 
-- NorthWest -> (-1, 1)
-- NorthEast  -> (1, 1)
-- SouthWest -> (-1, -1)
-- SouthEast  -> (1, -1)
-- Center -> (0, 0)
-- North -> (0, 1)
-- South -> (0, -1)
-- East -> (1, 0)
-- West -> (-1, 0)
 
 
