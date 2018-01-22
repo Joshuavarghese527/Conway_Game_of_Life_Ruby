@@ -4,22 +4,15 @@ require_relative "../classes/cell"
 require_relative "../classes/location" 
                
 describe Community do            
-  it 'Community with no living cells will contain no living cells in the next generation' do  
-     community  = Community.new            
-     community.tick            
-
-     living_cells = community.living_cells            
-
-     assert_equal 0, living_cells
-  end 
-  it 'Community with one living cell will die in the next generation' do 
+  it 'neighborhood with one living cell will die in the next generation' do            
     cell = Cell.new(Location::CENTER)
+    c2 = Cell.new(Location::NORTH)
     community = Community.new            
-    community.seed([cell])
+    community.seed([cell, c2])
 
     community.tick            
 
-    assert_equal 0, community.living_cells            
+    assert cell.dead?, 'Cell is still living'
   end  
   it 'Community with two living cells as neighbors will stay living in the next generation' do            
     c1 = Cell.new(Location::CENTER)
@@ -151,4 +144,30 @@ describe Community do
 
     assert_equal 3, community.number_of_neighbors_for(c1)
   end 
+  it 'a cell with 4 living cells will die of overcrowding' do            
+    c1 = Cell.new(Location::CENTER)
+    c2 = Cell.new(Location::NORTH)
+    c3 = Cell.new(Location::NORTHWEST)
+    c4 = Cell.new(Location::WEST)
+    c5 = Cell.new(Location::SOUTHWEST)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4, c5])
+
+    community.tick            
+
+    assert c1.dead?            
+  end 
+  it 'a dead cell with three living cells as neighbors will be born in the next generation' do            
+    c1 = Cell.new(Location::CENTER)
+    c1.die            
+    c2 = Cell.new(Location::NORTH)
+    c3 = Cell.new(Location::NORTHWEST)
+    c4 = Cell.new(Location::NORTHEAST)
+    community = Community.new            
+    community.seed([c1, c2, c3, c4])
+
+    community.tick            
+
+    assert c1.living?            
+  end
 end  

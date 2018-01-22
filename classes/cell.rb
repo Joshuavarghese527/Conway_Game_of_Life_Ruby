@@ -19,5 +19,13 @@ class Cell
 
   def location              
     Location.for(@x, @y)
+  end
+
+  def dead?              
+    !living?
   end 
-end    
+
+  def birth
+    @living = true
+  end 
+end   

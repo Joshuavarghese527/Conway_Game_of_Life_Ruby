@@ -5,9 +5,17 @@ class Community
   end
 
   def tick  
-    if 
-      @grid_mapping.size > 1
-    else 
+    if @grid_mapping.size > 1
+      @grid_mapping.each do |cell|
+        neighbors_count = number_of_neighbors_for(cell)
+        if neighbors_count != 2 or neighbors_count == 3
+          cell.die 
+        end
+        if cell.dead? and neighbors_count == 3
+          cell.birth
+        end
+      end
+    else
       @grid_mapping.clear
     end         
   end            
@@ -45,7 +53,7 @@ class Community
 
     elsif cell.location == Location::EAST
       size = calculate_neighbors_for_east_cell
-      
+
     elsif cell.location == Location::WEST
       size = calculate_neighbors_for_west_cell
     end            
