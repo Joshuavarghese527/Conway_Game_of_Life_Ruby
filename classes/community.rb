@@ -17,7 +17,7 @@ class Community
 
   def number_of_neighbors_for(cell)
     size = 0
-    offsets = Location.all            
+    offsets = Location::OFFSETS           
     offsets.each do |offset|            
       size = count_cell(cell, offset, size)
     end            

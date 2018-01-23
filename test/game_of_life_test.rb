@@ -157,7 +157,7 @@ describe Community do
 
     assert c1.dead?            
   end 
-  it 'a dead cell with three living cells as neighbors will be born in the next generation' do            
+  it 'a dead cell with 3 living cells as neighbors will be born in the next generation' do            
     c1 = Cell.new(Location::CENTER)
     c1.die            
     c2 = Cell.new(Location::NORTH)
