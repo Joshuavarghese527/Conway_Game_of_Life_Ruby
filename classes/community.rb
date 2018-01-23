@@ -5,11 +5,27 @@ class Community
   end
 
   def tick  
+<<<<<<< HEAD
     @grid_mapping.each do |cell|
       lonely_or_overcrowed_cells_die(cell)
       reproduction_of(cell)
     end 
   end       
+=======
+   if @grid_mapping.size > 1
+      @grid_mapping.each do |cell|
+        lonely_or_overcrowed_cells_die(cell)
+        reproduction_of(cell)
+      end 
+    else
+      @grid_mapping.clear
+    end
+  end        
+
+  def living_cells
+    @grid_mapping.size            
+  end 
+>>>>>>> 5942beb8d08dee7d65217fb710461cc33e6efbc4
 
   def seed(cells)
     @grid_mapping = cells
