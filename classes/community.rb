@@ -5,24 +5,11 @@ class Community
   end
 
   def tick  
-    if @grid_mapping.size > 1
-      @grid_mapping.each do |cell|
-        neighbors_count = number_of_neighbors_for(cell)
-        if neighbors_count != 2 or neighbors_count == 3
-          cell.die 
-        end
-        if cell.dead? and neighbors_count == 3
-          cell.birth
-        end
-      end
-    else
-      @grid_mapping.clear
-    end         
-  end            
-
-  def living_cells
-    @grid_mapping.size            
-  end 
+    @grid_mapping.each do |cell|
+      lonely_or_overcrowed_cells_die(cell)
+      reproduction_of(cell)
+    end 
+  end       
 
   def seed(cells)
     @grid_mapping = cells
@@ -30,35 +17,29 @@ class Community
 
   def number_of_neighbors_for(cell)
     size = 0
-    if cell.location == Location::CENTER
+    location = cell.location            
+    case location
+    when Location::CENTER
       size = calculate_neighbors_for_center_cell
-
-    elsif cell.location == Location::NORTHWEST
+    when Location::NORTHWEST
       size = calculate_neighbors_for_northwest_cell
-
-    elsif cell.location == Location::NORTHEAST
+    when Location::NORTHEAST
       size = calculate_neighbors_for_northeast_cell
-
-    elsif cell.location == Location::SOUTHWEST
+    when Location::SOUTHWEST
       size = calculate_neighbors_for_southwest_cell
-
-    elsif cell.location == Location::SOUTHEAST
+    when Location::SOUTHEAST
       size = calculate_neighbors_for_southeast_cell
-
-    elsif cell.location == Location::NORTH
+    when Location::NORTH
       size = calculate_neighbors_for_north_cell
-
-    elsif cell.location == Location::SOUTH
+    when Location::SOUTH
       size = calculate_neighbors_for_south_cell
-
-    elsif cell.location == Location::EAST
+    when Location::EAST
       size = calculate_neighbors_for_east_cell
-
-    elsif cell.location == Location::WEST
+    when Location::WEST
       size = calculate_neighbors_for_west_cell
     end            
     size
-  end            
+  end              
 
   private            
 
@@ -193,5 +174,19 @@ class Community
     size += count_north_cell
     size += count_south_cell
     size
-  end            
-end                           
+  end 
+
+  def lonely_or_overcrowed_cells_die(cell)
+    neighbors_count = number_of_neighbors_for(cell)
+    if neighbors_count != 2 or neighbors_count == 3
+      cell.die 
+    end
+  end  
+
+  def reproduction_of(cell)
+    neighbors_count = number_of_neighbors_for(cell)
+    if cell.dead? and neighbors_count == 3
+      cell.birth         
+    end  
+  end          
+end                          

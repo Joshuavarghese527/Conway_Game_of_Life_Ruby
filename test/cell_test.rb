@@ -21,5 +21,12 @@ describe Cell do
 
     assert_equal Location::NORTH, result
   end    
-     
+  it 'dead cell can be born again' do 
+    cell = Cell.new(Location::CENTER)
+    cell.die 
+
+    cell.birth
+
+    assert cell.living?
+  end   
 end 
