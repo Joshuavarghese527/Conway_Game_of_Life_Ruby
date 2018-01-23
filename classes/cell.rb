@@ -1,9 +1,10 @@
-class Cell                
+class Cell  
+attr_reader :location  
+            
   def initialize(location)
-    @living = true
-    @x = location[0]
-    @y = location[1]
-  end    
+    @living = true            
+    @location = location
+  end              
 
   def living?            
     @living == true         
@@ -17,10 +18,6 @@ class Cell
     (@x == 0 and @y == 0)
   end
 
-  def location              
-    Location.for(@x, @y)
-  end
-
   def dead?              
     !living?
   end 
@@ -28,4 +25,8 @@ class Cell
   def birth
     @living = true
   end 
+
+  def at?(location)
+    @location == location
+  end  
 end   

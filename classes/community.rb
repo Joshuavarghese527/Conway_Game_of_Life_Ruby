@@ -17,26 +17,25 @@ class Community
 
   def number_of_neighbors_for(cell)
     size = 0
-    size = count_cell(cell, Location::NORTHWEST, size)
-    size = count_cell(cell, Location::NORTHEAST, size)
-    size = count_cell(cell, Location::SOUTHWEST, size)
-    size = count_cell(cell, Location::SOUTHEAST, size)
-    size = count_cell(cell, Location::NORTH, size)
-    size = count_cell(cell, Location::SOUTH, size)
-    size = count_cell(cell, Location::EAST, size)
-    size = count_cell(cell, Location::WEST, size)
+    offsets = Location.all            
+    offsets.each do |offset|            
+      size = count_cell(cell, offset, size)
+    end            
     size
-  end             
+  end              
 
   private
 
-  def count_cell(original, direction, size)
-    result = @grid_mapping.detect{ |c| c.location ==(Location.add(original.location, direction))}
-    if result
-      size += 1
-    end
-      size
-    end            
+  def count_cell(original, offset, size)
+    neighbor = find_neighbor_cell(original, offset)
+    size += 1 if neighbor
+    size
+  end   
+
+  def find_neighbor_cell(original, offset)
+    neighbor_location = Location.add(original.location, offset)
+    @grid_mapping.detect{|cell| cell.at?(neighbor_location)}
+  end         
 
   def lonely_or_overcrowed_cells_die(cell)
     neighbors_count = number_of_neighbors_for(cell)

@@ -1,5 +1,4 @@
 class Location
-
   NORTHWEST = [-1, 1]
   NORTHEAST = [1, 1]
   SOUTHWEST = [-1, -1]
@@ -13,7 +12,6 @@ class Location
   def self.add(first, second)
     [first[0]+second[0], first[1]+second[1]]
   end
-
 
   def self.for(x, y)
     if x == 0 and y == 1
@@ -35,5 +33,9 @@ class Location
     elsif x == -1 and y == -1
       SOUTHWEST
     end          
-  end 
+  end
+
+  def self.all                
+    [NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST, NORTH, SOUTH, EAST, WEST]
+  end  
 end 
