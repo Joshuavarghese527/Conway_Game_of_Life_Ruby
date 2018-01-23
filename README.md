@@ -20,17 +20,14 @@ The initial pattern constitutes the seed of the system. The first generation is 
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 ## Methods
-1. Assumptions
-- Simplify by making 3x3 grid
-- Number of generations over which to observe the evolution is 3.
 
-2. Understand Problem
+1. Understand Problem
 - Where does the tick method belong
 - How should we represent the grid?
 - How should we initialize the configuration?
 - Who is responsible for applying the rules simultaneously? 
 
-3. Test-Driven Game of Life
+2. Test-Driven Game of Life
 - Minitest 
 
 ## Moore Neighborhood
@@ -44,14 +41,6 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 - We can fill the Moore Neighborhood with 0s and 1s randomly
 - Tick method can be used for game class 
-
-## Test Cases 
-
-- A 3 x 3 grid with no living cells will contain no living cells in the next generation.
-
-- A 3 x 3 grid with one living cell will die in the next generation.
-
-- A 3 x 3 grid with two live cells will stay living in the next generation.
 
 
 ## What we want to accomplish
