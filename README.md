@@ -73,6 +73,14 @@ if (cell is dead) AND (number-of-neighbors is NOT 3)
 
 ## CheckList
 
-[x] Cell = living | # of live neighbors = 0, 1 | new_cell_state = 0 | Category = lonely
+[x] Cell = living | # of live neighbors = 0, 1 | new_cell_state = 0 | Category = Lonely
+
+[x] Cell = living | # of live neighbors = 4,5,6,7,8 | new_cell_state = 0 | Category =  Overcrowded
+
+[x] Cell = living | # of live neighbors = 2,3 | new_cell_state = 1 | Category = Lives
+
+[x] Cell = dead | # of live neighbors = 3 | new_cell_state = 1 | Category = Birth
+
+[x] Cell = dead | # of live neighbors = 0,1,2,4,5,6,7,8 | new_cell_state = 0 | Category = Barren
 
 
