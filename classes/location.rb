@@ -10,6 +10,10 @@ class Location
   EAST      = [1, 0]
   WEST      = [-1, 0]
 
+  def self.add(first, second)
+    [first[0]+second[0], first[1]+second[1]]
+  end
+
 
   def self.for(x, y)
     if x == 0 and y == 1

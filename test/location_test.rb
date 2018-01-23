@@ -46,5 +46,10 @@ describe Location do
     location = Location.for(0, 0)
 
     assert_equal Location::CENTER, location
-  end                
+  end 
+  it 'adding two locations returns a new location' do            
+    result = Location.add(Location::SOUTH, Location::CENTER)
+
+    assert_equal Location::SOUTH, result
+  end                               
 end   
