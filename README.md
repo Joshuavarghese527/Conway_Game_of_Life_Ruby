@@ -37,7 +37,9 @@ The initial pattern constitutes the seed of the system. The first generation is 
 - The Moore Neighborhood is composed of nine cells: a central cell and the eight cells that surround it.
 
   | x - 1, y + 1 | x, y + 1 | x + 1, y + 1 |
+  ------------------------------------------
   | x - 1,  y    | x,y      | x + 1, y     |
+  ------------------------------------------
   | x - 1, y -1  | x, y - 1 | x + 1, y - 1 |
 
 - We can fill the Moore Neighborhood with 0s and 1s randomly
@@ -69,5 +71,8 @@ if (cell is dead) AND (number-of-neighbors is NOT 3)
      nothing to do
 ```
 
+## CheckList
+
+[x] Cell = living | # of live neighbors = 0, 1 | new_cell_state = 0 | Category = lonely
 
 
